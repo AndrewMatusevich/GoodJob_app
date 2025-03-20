@@ -6,14 +6,14 @@ plugins {
 
 android {
     namespace = "com.example.goodjobapp"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.example.goodjobapp"
-        minSdk = 26
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = libs.versions.applicationId.get()
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.versionName.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_19
+        targetCompatibility = JavaVersion.VERSION_19
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = JavaVersion.VERSION_19.toString()
     }
     buildFeatures {
         compose = true
@@ -40,6 +40,17 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":core:navigation"))
+    implementation(project(":core:ui"))
+    implementation(project(":data"))
+    implementation(project(":data_api"))
+    implementation(project(":domain_models"))
+    implementation(project(":features:word_screen"))
+    implementation(project(":features:word_screen_api"))
+    implementation(project(":features:settings_screen"))
+    implementation(project(":features:settings_screen_api"))
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

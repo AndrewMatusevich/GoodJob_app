@@ -21,3 +21,12 @@ dependencyResolutionManagement {
 
 rootProject.name = "GoodJobApp"
 include(":app")
+include(":domain_models")
+include(":data")
+include(":data_api")
+include(":core:ui")
+include(":core:navigation")
+include(":features:word_screen")
+include(":features:settings_screen")
+include(":features:settings_screen_api")
+include(":features:word_screen_api")
