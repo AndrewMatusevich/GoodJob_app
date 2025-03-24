@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.core.navigation"
+    namespace = "com.example.goodjobapp.core.navigation"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {

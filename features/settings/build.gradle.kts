@@ -1,22 +1,18 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.example.goodjobapp"
+    namespace = "com.example.goodjobapp.settings"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = libs.versions.applicationId.get()
         minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = libs.versions.versionCode.get().toInt()
-        versionName = libs.versions.versionName.get()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -35,41 +31,23 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_19.toString()
     }
-    buildFeatures {
-        compose = true
-    }
 }
 
 dependencies {
 
     implementation(project(":core:navigation"))
     implementation(project(":core:ui"))
-    implementation(project(":data"))
     implementation(project(":data_api"))
     implementation(project(":domain_models"))
-    implementation(project(":features:word"))
-    implementation(project(":features:word_api"))
-    implementation(project(":features:settings"))
     implementation(project(":features:settings_api"))
 
     // DI
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
 
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
 }

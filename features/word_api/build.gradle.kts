@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.goodjobapp.example.data"
+    namespace = "com.example.goodjobapp.word.api"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -33,9 +33,6 @@ android {
 }
 
 dependencies {
-
-    implementation(project(":data_api"))
-    implementation(project(":domain_models"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

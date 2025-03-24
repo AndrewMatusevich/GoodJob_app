@@ -15,6 +15,5 @@ kotlin {
 }
 
 dependencies {
-
     implementation(project(":domain_models"))
 }
